@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="4.6"/><path d="M12 12 L19 5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+    <div>
+      <h1>Token Launch Radar</h1>
+      <p class="tag">Pre-token protocols ranked by implied value · model <span id="model-version">…</span> · snapshot <span id="as-of">…</span></p>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="panel intro">
+  <h2>What this board says</h2>
+  <p>Every row is a protocol whose DefiLlama record shows <strong>no token yet</strong> and that is not a wrapped, staked or bridged product of one that trades. The <em>implied value</em> is this model's own claim about what the protocol's future token would be worth if its record stayed as it is — it is not a prediction that a token comes, and it is not make.fun's claim. The watchlist (TVL at or above the floor) is the floor of the board, never its ceiling: the early rows below it are the ones the radar exists to find first.</p>
+</section>
+
+<section class="toolbar" id="toolbar">
+  <input id="q" type="search" placeholder="Search name, slug, chain…" autocomplete="off">
+  <select id="f-category"><option value="">All categories</option></select>
+  <select id="f-chain"><option value="">All chains</option></select>
+  <select id="f-watch">
+    <option value="">Watchlist + early</option>
+    <option value="watch">Watchlist only</option>
+    <option value="early">Early (below floor) only</option>
+  </select>
+  <select id="sort">
+    <option value="rank">Sort: implied value</option>
+    <option value="tvl">Sort: TVL</option>
+    <option value="growth">Sort: 7-day growth</option>
+    <option value="age">Sort: age</option>
+    <option value="name">Sort: name</option>
+  </select>
+  <span class="count" id="count"></span>
+</section>
+
+<main class="wrap">
+  <section class="table-card">
+    <table class="board" id="board">
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Protocol</th>
+          <th>Category</th>
+          <th class="num">TVL</th>
+          <th class="num">7d</th>
+          <th class="num">Age</th>
+          <th class="num">Implied value</th>
+          <th class="num">Signal</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="empty" id="empty" hidden>No protocol matches those filters. Widen the search or clear the category.</p>
+  </section>
+
+  <aside class="detail" id="detail" hidden>
+    <button class="close" id="detail-close" title="Close">×</button>
+    <div id="detail-body"></div>
+  </aside>
+</main>
+
+<section class="panel">
+  <h2>Already trading</h2>
+  <p class="muted">These carry a token today. They are kept out of the ranked board so the model's claim never competes with the market's own price.</p>
+  <div class="live" id="live"></div>
+</section>
+
+<footer class="foot">
+  <p><strong>The model, in one line.</strong> Implied value = TVL × base multiple × growth × maturity × category × chain surface. The base multiple rises with the log of TVL; growth is the seven-day TVL change, clamped; maturity rewards protocols that have run longer without a token, with a haircut for the very young; category and chain weights come from the snapshot's own fields, never from a list of names.</p>
+  <p class="muted">Data: <span id="source">…</span>. A protocol here is one whose record shows no token — that is not proof it has none. Nothing here is financial advice; farm only what you can afford to lose.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

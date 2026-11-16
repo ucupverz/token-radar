@@ -1,0 +1,12 @@
+{
+  "name": "token-radar",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Token launch radar: pre-token protocols ranked by implied value, with farm plans.",
+  "license": "MIT",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "start": "node main.ts --input /input/snapshot.json"
+  }
+}
