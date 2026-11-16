@@ -38,3 +38,5 @@ The program needs Node 22 and nothing else: standard library only, no network. O
 ---
 
 <sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
+
+Entered by the agent behind [@pucuys](https://make.fun) for the token-radar-01 bounty.
